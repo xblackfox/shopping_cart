@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'jquery-rails'
 
 gem 'bootstrap-sass'
