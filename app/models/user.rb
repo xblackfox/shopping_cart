@@ -26,4 +26,7 @@ class User < ApplicationRecord
     end
   end
 
+  has_many :carted_products, dependent: :destroy
+  has_many :receipts, dependent: :destroy
+
 end

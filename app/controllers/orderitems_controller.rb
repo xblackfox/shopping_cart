@@ -1,0 +1,6 @@
+class OrderitemsController < ApplicationController
+
+
+
+
+end
