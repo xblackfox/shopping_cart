@@ -1,0 +1,28 @@
+<h1>index</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<td>Item name</td>
+			<td>Product Image</td>
+			<td>Price</td>
+			<td>Quantity</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @products.each do |product| %>
+		<tr>
+			<td><%= product.item_name %></td>
+	    	<td><%= image_tag product.image, :size => "100x100" %></td>
+	    	<td><%= product.price %></td>
+	    	<td><%= product.quantity %></td>
+	    	<td><%= link_to "Edit", edit_admin_product_path(id: product.id)%></td>
+	    	<td><%= link_to "Delete", admin_product_path(id: product.id), method: :delete, data: { confirm: "are you sure?"} %></td>
+	    </tr>
+	    <% end %>
+</table>
+
+<%= link_to 'new', new_admin_product_path %>

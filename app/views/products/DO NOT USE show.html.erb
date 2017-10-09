@@ -1,0 +1,14 @@
+<%= form_for @carted_product, url: product_carted_products_path(product_id: @product.id), method: :post do |f| %>
+
+	<p><%= @product.item_name %></p>
+	<p><%= @product.price %></p>
+	<p><%= @product.quantity %></p>
+  	<%= f.text_field :quantity %>
+  	<%= f.submit "Create" %>
+<% end %>
+
+<br>
+
+<%= link_to "index", products_path(@product) %>
+
+

@@ -1,9 +1,0 @@
-<%= @prod.item_name %> <br>
-<%= @prod.price %> <br>
-<%= @prod.quantity %>
-
-<br>
-
-<%= link_to "edit", edit_product_path(@prod) %>
-<%= link_to "index", products_path(@prod) %>
-<%= link_to "delete", product_path(@prod), method: :delete, data: { confirm: "are you sure?"}%>
