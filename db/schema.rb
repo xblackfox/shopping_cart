@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006063544) do
+ActiveRecord::Schema.define(version: 20171009105426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171006063544) do
     t.bigint "product_id"
     t.integer "quantity"
     t.bigint "receipt_id"
+    t.string "status"
     t.index ["product_id"], name: "index_orderitems_on_product_id"
     t.index ["receipt_id"], name: "index_orderitems_on_receipt_id"
   end

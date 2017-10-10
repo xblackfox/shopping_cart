@@ -1,0 +1,10 @@
+
+<%= form_for @orderitem, url: admin_orderitem_path(id: @orderitem.id), method: :put do |f| %>
+  <%= f.label "Status" %>
+  	<%= f.radio_button :status, "delivered" %>
+	<%= f.label :status_delivered, "delivered" %> 
+
+	<%= f.radio_button :status, "not delivered" %>
+	<%= f.label :status_notdeliveref, "not delivered" %>
+  <%= f.submit "Update" %>
+<% end %>
