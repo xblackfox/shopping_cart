@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 20171006063544) do
     t.string "item_name"
     t.float "price"
     t.string "image"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
   end
 
   create_table "receipts", force: :cascade do |t|
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20171006063544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carted_products", "products"
   add_foreign_key "carted_products", "users"
   add_foreign_key "orderitems", "products"
   add_foreign_key "orderitems", "receipts"
