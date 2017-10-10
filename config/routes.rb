@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 	namespace :admin do
 		resources :products, only: [:index, :new, :create, :edit, :update, :destroy]
+		resources :orderitems, only: [:index, :edit, :update, :destroy]
 	end
 
 	# post '/checkout' => "carted"
@@ -25,4 +26,6 @@ Rails.application.routes.draw do
 	if Rails.env.development?
     	mount LetterOpenerWeb::Engine, at: "/letter_opener"
   	end
+
+
 end

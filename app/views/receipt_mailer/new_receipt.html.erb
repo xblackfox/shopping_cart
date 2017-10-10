@@ -1,3 +1,29 @@
 <h1>Your order is CONFIRMED<h1>
 
-<%= @receipt.orderitems %>
+<table class="table">
+	<thead>
+		<tr>
+			<td>Item_Name</td>
+			<td>Price</td>
+			<td>Quantity</td>
+			<td>Sub-total</td>
+		</tr>	
+	</thead>
+
+	<tbody>
+		<% @receipt.orderitems.each do |orderitem| %>
+		<tr>
+			<td><%= orderitem.product.item_name %></td>
+			<td><%= orderitem.product.price %></td>
+			<td><%= orderitem.quantity %></td>
+			<td><%= orderitem.product.price * orderitem.quantity %></td>
+		</tr> 
+		<% end %>
+		<tr>
+			<td colspan="2"></td>
+			<td><strong>Paid</strong></td>
+			<td><%= @receipt.totalcost %></td>
+		</tr>		
+	</tbody>
+
+</table>

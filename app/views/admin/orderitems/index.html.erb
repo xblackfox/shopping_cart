@@ -1,0 +1,39 @@
+<h1>RECEIPT SHOW PAGE</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<td>Item_Name</td>
+			<td>Picture</td>
+			<td>Price</td>
+			<td>Quantity</td>
+			<td>Sub-total</td>
+			<td>Status</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>	
+	</thead>
+
+	<tbody>
+		<% @orderitems.each do |orderitem| %>
+		<tr>
+			<td><%= orderitem.product.item_name %></td>
+			<td><%= image_tag orderitem.product.image.url, :size => "50x50" %>
+			<td><%= orderitem.product.price %></td>
+			<td><%= orderitem.quantity %></td>
+			<td><%= orderitem.product.price * orderitem.quantity %></td>
+			<td>
+				<%= orderitem.status %>
+			</td>
+			<td>
+				<%= link_to "Edit", edit_admin_orderitem_path(id: orderitem.id) %>
+			</td>
+			<td>
+				<%= link_to "Delete", admin_orderitem_path(id: orderitem.id), method: :delete %>
+			</td>
+		</tr> 
+		<% end %>
+	
+	</tbody>
+
+</table>
