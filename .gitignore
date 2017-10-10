@@ -17,4 +17,8 @@
 /yarn-error.log
 
 .byebug_history
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17d8f164ffef5bcb2b9009535189cd0e464eb8ad
 .env
