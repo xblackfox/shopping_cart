@@ -24,7 +24,7 @@ gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+
 
 #gem 'sqlite3'
 # Use Puma as the app server
@@ -56,6 +56,13 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -69,5 +76,8 @@ group :development do
   gem 'letter_opener_web'
 end
 
+group :production do
+  gem 'pg'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

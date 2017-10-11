@@ -10,7 +10,11 @@ class Admin::OrderitemsController < ApplicationController
 	def update
 		@orderitem = Orderitem.find(params[:id])
 		post_params = params.require(:orderitem).permit(:status)
-		@orderitem.update(post_params)
+		@orderlist = Orderitem.where(receipt_id: @orderitem.receipt_id)
+		@orderlist.each do |order|
+			order.update(post_params)
+		end
+		# @orderitem.update(post_params)
 		redirect_to admin_orderitems_path
 	end
 
