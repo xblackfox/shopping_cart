@@ -3,6 +3,7 @@
 <table class="table">
 	<thead>
 		<tr>
+			<td>Receipt</td>
 			<td>Item_Name</td>
 			<td>Picture</td>
 			<td>Price</td>
@@ -15,8 +16,9 @@
 	</thead>
 
 	<tbody>
-		<% @orderitems.each do |orderitem| %>
+		<% @orderitems.order(receipt_id: :desc).each do |orderitem| %>
 		<tr>
+			<td><%= orderitem.receipt.id %></td>
 			<td><%= orderitem.product.item_name %></td>
 			<td><%= image_tag orderitem.product.image.url, :size => "50x50" %>
 			<td><%= orderitem.product.price %></td>
