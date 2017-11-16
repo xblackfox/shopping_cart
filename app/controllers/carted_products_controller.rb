@@ -8,7 +8,7 @@ class CartedProductsController < ApplicationController
 	# Braintree::Configuration.private_key = ENV["BRAINTREE_PRIVATE_KEY"]
 
 	def index
-		@carted_products = CartedProduct.all
+		@carted_products = CartedProduct.where(user_id: current_user.id)
 		@client_token = Braintree::ClientToken.generate
 		@carted_product_total_price = carted_product_total_price
 	end
