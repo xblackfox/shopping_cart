@@ -31,23 +31,26 @@
 
 <%= link_to "Products_Index", products_path %>
 
-<% if @carted_product_total_price!=0 %>
+
       <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
         <section>
-          <div class="bt-drop-in-wrapper col-md-4 col-md-offset-4">
+          <label for="amount">
+            <span class="input-label">Total Amount</span>
+            <div class="input-wrapper amount-wrapper">
+              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="<%=@carted_product_total_price%>">
+            </div>
+          </label>
+
+          <div class="bt-drop-in-wrapper">
             <div id="bt-dropin"></div>
-            <p>Total amount payable $<%=@carted_product_total_price%></p>
-            <input type="hidden" id="nonce" name="payment_method_nonce" />
-        	<input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="<%=@carted_product_total_price%>" style="display:none">
-        		<button class="button" type="submit">
-        			<span>Confirm Pay</span>
-        		</button>
           </div>
         </section>
 
-
+        <input type="hidden" id="nonce" name="payment_method_nonce" />
+        <button class="button" type="submit">
+        	<span>Confirm Pay</span>
+        </button>
       <% end %>
-<% end %>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.8.0/js/dropin.min.js"></script>
 	<script>
@@ -56,9 +59,9 @@
 	  braintree.dropin.create({
 	    authorization: client_token,
 	    container: '#bt-dropin',
-	    // paypal: {
-	    //   flow: 'vault'
-	    // }
+	    paypal: {
+	      flow: 'vault'
+	    }
 	  }, function (createErr, instance) {
 	    form.addEventListener('submit', function (event) {
 	      event.preventDefault();

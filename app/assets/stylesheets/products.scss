@@ -2,6 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.products-index-quantity, .products-index-submit{
-	display: inline-block;
+// .products-index-quantity, .products-index-submit{
+// 	display: inline-block;
+// }
+
+.products-sale{
+  width: 100%;
+  text-align: center;
+}
+.card{
+  margin: 10px;
+  background-color: green;
+}
+.product-image-for-sale{
+  width: 100px;
+  height: 100px;
+}
+
+.products-index-quantity{
+  width: 100%;
+}
+
+.card{
+  border: black solid 1px;
+}
+.add-quantity{
+  display: inline-block;
+}
+
+.change-quantity{
+  width: 100px;
 }

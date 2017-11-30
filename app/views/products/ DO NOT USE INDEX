@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <h1>index</h1>
+
+  <table class="table">
+  	<thead>
+  		<tr>
+  			<td>Item name</td>
+  			<td>Product Image</td>
+  			<td>Price</td>
+  			<td>Quantity</td>
+  			<td>Add quantity</td>
+  		</tr>
+  	</thead>
+
+  	<tbody>
+  		<% @products.each do |product| %>		
+  			<tr>
+  				<td><%= product.item_name %></td>
+  		    	<td><%= image_tag product.image, :size => "100x100" %></td>
+  		    	<td><%= product.price %></td>
+  		    	<td><%= product.quantity %></td>
+  				<td>
+  					<%= form_for @carted_product, url: product_carted_products_path(product_id: product.id), method: :post do |f| %>
+  					<div class="products-index-quantity">		
+  						<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+  					</div>
+  					<div class="products-index-submit">
+  	            		<%= f.submit "Add to Cart" %>
+  	            	</span>
+             			<% end %> 	    	
+  	            </td>	
+  		    </tr>
+  	    <% end %>
+  </table>
+
+  <%= link_to "View My Cart", carted_products_path %>
+</div>
