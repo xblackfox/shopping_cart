@@ -1,37 +1,35 @@
 <div class="wrapper">
   <h1>index</h1>
 
-  <table class="table">
-  	<thead>
-  		<tr>
-  			<td>Item name</td>
-  			<td>Product Image</td>
-  			<td>Price</td>
-  			<td>Quantity</td>
-  			<td>Add quantity</td>
-  		</tr>
-  	</thead>
+  <div class="container products-sale">
+    <div class="row">
+      <% @products.each do |product| %> 
+        <div class="col-xs-12 col-md-4">
+          <div class="card">
+            <div class="card-img-top">
+            <%=image_tag product.image, class:"product-image-for-sale"%>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><%= product.item_name %></h4>
+              <p class="card-text">Price = $<%= product.price %></p>
+              <p class="card-text">Quantity = <%= product.quantity %></p>
 
-  	<tbody>
-  		<% @products.each do |product| %>		
-  			<tr>
-  				<td><%= product.item_name %></td>
-  		    	<td><%= image_tag product.image, :size => "100x100" %></td>
-  		    	<td><%= product.price %></td>
-  		    	<td><%= product.quantity %></td>
-  				<td>
-  					<%= form_for @carted_product, url: product_carted_products_path(product_id: product.id), method: :post do |f| %>
-  					<div class="products-index-quantity">		
-  						<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-  					</div>
-  					<div class="products-index-submit">
-  	            		<%= f.submit "Add to Cart" %>
-  	            	</span>
-             			<% end %> 	    	
-  	            </td>	
-  		    </tr>
-  	    <% end %>
-  </table>
-
-  <%= link_to "View My Cart", carted_products_path %>
+              <%= form_for @carted_product, url: product_carted_products_path(product_id: product.id), method: :post do |f| %>
+                <p class="products-index-quantity">
+                  <span class="add-quantity">Add Quantity</span>
+                  <span class="add-quantity">
+                  <%= f.number_field :quantity, value: 1, class: "form-control change-quantity", min: 1 %>
+                  </span>
+                </p>
+                <p class="products-index-submit">
+                  <%= f.submit "Add to Cart" %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+    <%= link_to "View My Cart", carted_products_path %>
 </div>
